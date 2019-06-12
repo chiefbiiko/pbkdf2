@@ -20,7 +20,7 @@ export interface KeyedHash {
 /** A class representation of the PBKDF2 algorithm. */
 export class PBKDF2 {
   private hmac: KeyedHash;
-  private rounds: number = 1000;
+  private rounds: number;
 
   /** Creates a new PBKDF2 instance. */
   constructor(hmac: KeyedHash, rounds: number = 10000) {
@@ -69,25 +69,6 @@ export class PBKDF2 {
     }
     return out;
   }
-
-  // /**
-  //  * Performs a quick selftest
-  //  * @return {Boolean} True if successful
-  //  */
-  // selftest(): boolean {
-  //   const tv = {
-  //     key:    'password',
-  //     salt:   'salt',
-  //     c:      2,
-  //     sha256: 'ae4d0c95af6b46d32d0adff928f06dd02a303f8ef3c251dfd6e2d85a95474c43'
-  //   };
-  //
-  //   let pbkdf2_sha256 = new PBKDF2(new HMAC(new SHA256()), tv.c);
-  //   let key = Convert.str2bin(tv.key);
-  //   let salt = Convert.str2bin(tv.salt);
-  //   let mac = pbkdf2_sha256.hash(key, salt, Convert.hex2bin(tv.sha256).length);
-  //   return Convert.bin2hex(mac) === tv.sha256;
-  // }
 }
 
 /** Derives a key from a password and salt using the indicated hash. */
@@ -96,7 +77,7 @@ export function pbkdf2(
   password: string | Uint8Array,
   salt: string | Uint8Array,
   length?: number,
-  rounds?: number
+  rounds: number = 10000
 ): Uint8Array {
   if (typeof password === "string") {
     password = encoder.encode(password);
