@@ -31,11 +31,11 @@ Creates a new PBKDF2 instance. `hmac` must be keyed hash conforming to above int
 
 #### `PBKDF2#derive(password: string | Uint8Array, salt: string | Uint8Array, length?: number, inputEncoding?: string, outputEncoding?: string): string | Uint8Array`
 
-Derives a key from given password and salt. The `length` parameter can be used to control the byte length of the derived key. It defaults to a half of the byte length of the given keyed hash's digest.
+Derives a key from given password and salt. The `length` parameter can be used to control the byte length of the derived key. It defaults to a half of the byte length of the given keyed hash's digest. `inputEncoding` can be either `null`, in which case the `password` and `salt` are treated as binary input, or one of `"utf8"`, `"hex"`, `"base64"`. The same applies to `outputEncoding`.
 
-#### `pbkdf2(hash: string, password: string | Uint8Array, salt: string | Uint8Array, inputEncoding?: string, outputEncoding?: string, length?: number, rounds: number = 10000): Uint8Array`
+#### `pbkdf2(hash: string, password: string | Uint8Array, salt: string | Uint8Array, inputEncoding?: string, outputEncoding?: string, length?: number, rounds: number = 10000): string | Uint8Array`
 
-Convenience function for deriving a key from a password and salt. `hash` should be one of `"sha1"`, `"sha256"`, or `"sha512"`, with the last two representing the respective SHA2 variants. The `length` parameter can be used to control the byte length of the derived key, whereas the `rounds` parameter controls the number of iterations. `length` defaults to a half of the byte length of the given keyed hash's digest.
+Convenience function for deriving a key from a password and salt. `hash` should be one of `"sha1"`, `"sha256"`, or `"sha512"`, with the last two representing the respective SHA2 variants. The `length` parameter can be used to control the byte length of the derived key, whereas the `rounds` parameter controls the number of iterations. `length` defaults to a half of the byte length of the given keyed hash's digest. See above for possible values for the `*encoding` parameters.
 
 ## Note
 
