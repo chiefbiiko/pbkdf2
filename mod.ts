@@ -15,7 +15,7 @@ const SHA512_REGEX: RegExp = /^\s*sha-?512\s*$/i;
 export interface KeyedHash {
   hashSize: number;
   init(key: Uint8Array): KeyedHash;
-  update(msg?: Uint8Array, inputEncoding?: string): KeyedHash;
+  update(msg: Uint8Array, inputEncoding?: string): KeyedHash;
   digest(outputEncoding?: string): string | Uint8Array;
 }
 

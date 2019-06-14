@@ -20,7 +20,7 @@ Prep: a generic representation of a keyed hash algorithm implementation.
 export interface KeyedHash {
   hashSize: number;
   init(key: Uint8Array): KeyedHash;
-  update(msg?: Uint8Array, inputEncoding?: string): KeyedHash;
+  update(msg: Uint8Array, inputEncoding?: string): KeyedHash;
   digest(outputEncoding?: string): string | Uint8Array;
 }
 ```
