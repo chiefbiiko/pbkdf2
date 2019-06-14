@@ -20,8 +20,8 @@ Prep: a generic representation of a keyed hash algorithm implementation.
 export interface KeyedHash {
   hashSize: number;
   init(key: Uint8Array): KeyedHash;
-  update(msg?: Uint8Array): KeyedHash;
-  digest(msg?: Uint8Array): Uint8Array;
+  update(msg?: Uint8Array, inputEncoding?: string): KeyedHash;
+  digest(outputEncoding?: string): string | Uint8Array;
 }
 ```
 
@@ -29,13 +29,13 @@ export interface KeyedHash {
 
 Creates a new PBKDF2 instance. `hmac` must be keyed hash conforming to above interface, fx [`hmac`](https://github.com/chiefbiiko/hmac).
 
-#### `PBKDF2#derive(password: Uint8Array, salt: Uint8Array, length?: number): Uint8Array`
+#### `PBKDF2#derive(password: string | Uint8Array, salt: string | Uint8Array, length?: number, inputEncoding?: string, outputEncoding?: string): string | Uint8Array`
 
-Derives a key from given password and salt. The `length` parameter can be used to control the byte length of the derived key.
+Derives a key from given password and salt. The `length` parameter can be used to control the byte length of the derived key. It defaults to a half of the byte length of the given keyed hash's digest.
 
-#### `pbkdf2(hash: string, password: string | Uint8Array, salt: string | Uint8Array, length?: number, rounds: number = 10000): Uint8Array`
+#### `pbkdf2(hash: string, password: string | Uint8Array, salt: string | Uint8Array, inputEncoding?: string, outputEncoding?: string, length?: number, rounds: number = 10000): Uint8Array`
 
-Convenience function for deriving a key from a password and salt. `hash` should be one of `"sha1"`, `"sha256"`, or `"sha512"`, with the last two representing the respective SHA2 variants. The `length` parameter can be used to control the byte length of the derived key, whereas the `rounds` parameter controls the number of iterations.
+Convenience function for deriving a key from a password and salt. `hash` should be one of `"sha1"`, `"sha256"`, or `"sha512"`, with the last two representing the respective SHA2 variants. The `length` parameter can be used to control the byte length of the derived key, whereas the `rounds` parameter controls the number of iterations. `length` defaults to a half of the byte length of the given keyed hash's digest.
 
 ## Note
 

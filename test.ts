@@ -54,7 +54,15 @@ testVectors.forEach(
       name: `PBKDF2 using HMAC-SHA1 ${i}`,
       fn(): void {
         assertEquals(
-          pbkdf2("sha1", password, salt, derivedKeyByteLength, count),
+          pbkdf2(
+            "sha1",
+            password,
+            salt,
+            null,
+            null,
+            derivedKeyByteLength,
+            count
+          ),
           derivedKey
         );
       }
