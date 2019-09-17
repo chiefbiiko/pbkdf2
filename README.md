@@ -4,6 +4,8 @@
 
 Password-Based Key Derivation Function 2.
 
+> PBKDF2 is obsolete - check out [alternatives](https://en.wikipedia.org/wiki/PBKDF2#Alternatives_to_PBKDF2)
+
 ## Usage
 
 ``` ts
