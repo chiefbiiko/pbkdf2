@@ -2,9 +2,9 @@
 
 [![Travis](http://img.shields.io/travis/chiefbiiko/pbkdf2.svg?style=flat)](http://travis-ci.org/chiefbiiko/pbkdf2) [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/chiefbiiko/pbkdf2?branch=master&svg=true)](https://ci.appveyor.com/project/chiefbiiko/pbkdf2)
 
-Password-Based Key Derivation Function 2.
+Password-Based Key Derivation Function 2
 
-> PBKDF2 is obsolete - check out [alternatives](https://en.wikipedia.org/wiki/PBKDF2#Alternatives_to_PBKDF2)
+> ⚠️ PBKDF2 is obsolete - check out [alternatives](https://en.wikipedia.org/wiki/PBKDF2#Alternatives_to_PBKDF2)
 
 ## Usage
 
